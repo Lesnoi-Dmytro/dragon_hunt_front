@@ -1,29 +1,26 @@
-import "./globals.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import localFont from "next/font/local";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { ThemeProvider } from "@mui/material/styles";
+import { Roboto } from "next/font/google";
+import { darkTheme, lightTheme } from "@/theme";
+import { CssBaseline } from "@mui/material";
+import MainHeader from "@/components/common/MainHeader";
 
 export const metadata: Metadata = {
   title: "Dragon Hunt",
   description: "Turn-based strategy game",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
-const theme = createTheme({
-  typography: {
-    fontFamily: `var(${geistSans.variable}), var(${geistMono.variable}), sans-serif`,
-  },
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
 });
 
 export default function RootLayout({
@@ -33,11 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${roboto.className} antialiased`}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <MainHeader />
+            {children}
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
