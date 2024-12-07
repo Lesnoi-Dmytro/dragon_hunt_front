@@ -27,24 +27,29 @@ export default function Sidebar({ open, onClose }: Props) {
 
   const navItems: NavItem[] = [
     {
-      path: "/combat",
+      path: "/hub/combat",
       text: "Combat",
       icon: "/images/swords.svg",
     },
     {
-      path: "/inventory",
+      path: "/hub/inventory",
       text: "Inventory",
       icon: "/images/bag.svg",
     },
     {
-      path: "/smith",
+      path: "/hub/smith",
       text: "Smith",
       icon: "/images/anvil.svg",
     },
     {
-      path: "/shop",
+      path: "/hub/shop",
       text: "Shop",
       icon: "/images/coins.svg",
+    },
+    {
+      path: "/hub/guild",
+      text: "Guild",
+      icon: "/images/guild.svg",
     },
   ];
 

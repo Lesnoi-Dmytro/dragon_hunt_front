@@ -8,7 +8,7 @@ export default function MainBackground({
   children: React.ReactNode;
 }>) {
   return (
-    <Box className="flex-1 relative">
+    <Box className="flex-1 relative" sx={{ backgroundColor: "secondary.main" }}>
       <Image
         className={`absolute bottom-4 left-4 mirror-x dark-invert ${styles["background-image"]}`}
         src="/images/dragon2.svg"

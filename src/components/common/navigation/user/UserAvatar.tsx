@@ -3,6 +3,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MailIcon from "@mui/icons-material/Mail";
 import DraftsIcon from "@mui/icons-material/Drafts";
+import GroupIcon from "@mui/icons-material/Group";
 
 import {
   Avatar,
@@ -59,6 +60,10 @@ export default function UserAvatar() {
         <MenuItem className="iconed-text">
           <PersonIcon />
           Profile
+        </MenuItem>
+        <MenuItem className="iconed-text">
+          <GroupIcon />
+          Friends
         </MenuItem>
         <MenuItem className="iconed-text">
           {unreadMails ? (

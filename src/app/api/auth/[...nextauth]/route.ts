@@ -17,8 +17,8 @@ const handler = NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { type: "text" },
-        password: { type: "password" },
+        username: {},
+        password: {},
       },
       async authorize(credentials): Promise<AuthUser | null> {
         try {
@@ -49,9 +49,12 @@ const handler = NextAuth({
     }),
   ],
   pages: {
-    // signIn: "/auth/signin",
+    signIn: "/auth/signin",
   },
   callbacks: {
+    async signIn() {
+      return true;
+    },
     async jwt({ token, user, account }): Promise<CustomJwt> {
       const customJwt = token as CustomJwt;
       if (customJwt.backend_token) {
