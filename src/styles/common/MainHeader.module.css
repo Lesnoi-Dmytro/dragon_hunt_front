@@ -1,0 +1,6 @@
+.mail-unread {
+  position: absolute;
+  z-index: 10;
+  bottom: -8px;
+  right: -8px;
+}
