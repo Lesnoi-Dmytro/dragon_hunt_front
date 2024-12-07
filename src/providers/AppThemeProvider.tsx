@@ -61,13 +61,6 @@ const AppThemeProvider = ({
               animation: "wave",
             },
           },
-          MuiListItemIcon: {
-            defaultProps: {
-              sx: {
-                minWidth: "36px",
-              },
-            },
-          },
         },
       }),
     []

@@ -1,4 +1,4 @@
-import styles from "@/styles/common/MainHeader.module.css";
+import styles from "@/styles/common/MainLayout.module.css";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MailIcon from "@mui/icons-material/Mail";

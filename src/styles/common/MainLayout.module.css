@@ -1,0 +1,13 @@
+.mail-unread {
+  position: absolute;
+  z-index: 10;
+  bottom: -8px;
+  right: -8px;
+}
+
+@media (max-width: 768px) {
+  .background-image {
+    width: 150px;
+    height: 150px;
+  }
+}

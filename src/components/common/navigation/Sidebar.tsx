@@ -39,7 +39,7 @@ export default function Sidebar({ open, onClose }: Props) {
     {
       path: "/smith",
       text: "Smith",
-      icon: "/images/armor.svg",
+      icon: "/images/anvil.svg",
     },
     {
       path: "/shop",
@@ -55,16 +55,29 @@ export default function Sidebar({ open, onClose }: Props) {
           {navItems.map((item) => (
             <ListItem key={item.path}>
               <ListItemButton onClick={() => router.push(item.path)}>
-                <ListItemIcon>
+                <ListItemIcon
+                  sx={{
+                    minWidth: "48px",
+                  }}
+                >
                   <Image
                     src={item.icon}
                     alt={item.text}
-                    height={24}
-                    width={24}
+                    height={36}
+                    width={36}
                     className="dark-invert"
                   />
                 </ListItemIcon>
-                <ListItemText>{item.text}</ListItemText>
+                <ListItemText
+                  sx={{
+                    ".MuiTypography-root": {
+                      fontSize: "1.5rem",
+                      fontWeight: 500,
+                    },
+                  }}
+                >
+                  {item.text}
+                </ListItemText>
               </ListItemButton>
             </ListItem>
           ))}

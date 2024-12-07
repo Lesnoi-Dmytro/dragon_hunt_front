@@ -1,3 +1,4 @@
+import MainBackground from "@/components/common/MainBackground";
 import MainHeader from "@/components/common/navigation/MainHeader";
 
 export default function RootLayout({
@@ -8,7 +9,7 @@ export default function RootLayout({
   return (
     <>
       <MainHeader />
-      <div className="flex-1">{children}</div>
+      <MainBackground>{children}</MainBackground>
     </>
   );
 }
