@@ -8,6 +8,7 @@ import {
   Avatar,
   Box,
   Chip,
+  Divider,
   IconButton,
   Menu,
   MenuItem,
@@ -15,8 +16,11 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function UserAvatar() {
+  const { status, data: user } = useSession();
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -25,24 +29,43 @@ export default function UserAvatar() {
     setAnchorEl(null);
   };
 
-  const [unreadMails, setUnreadMails] = useState<number>(9);
+  const [unreadMails] = useState<number>(9);
 
   return (
     <>
       <IconButton onClick={handleClick}>
-        {false ? (
-          <Avatar src="/" alt="Name" />
+        {status !== "loading" && user ? (
+          <Avatar src={user?.user?.image || ""}>
+            {user?.user?.name?.charAt(0) || ""}
+          </Avatar>
         ) : (
           <Skeleton variant="circular" width={40} height={40} />
         )}
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+        <Box className="px-4 pt-1 pb-2">
+          {user?.user?.name ? (
+            <Typography className="text-center">{user.user.name}</Typography>
+          ) : (
+            <Skeleton
+              variant="rounded"
+              width={"100%"}
+              sx={{ fontSize: "1rem" }}
+            />
+          )}
+        </Box>
+
+        <Divider flexItem />
+        <MenuItem className="iconed-text">
+          <PersonIcon />
+          Profile
+        </MenuItem>
         <MenuItem className="iconed-text">
           {unreadMails ? (
             <Box className="relative">
               <MailIcon />
               <Chip
-                label={unreadMails < 10 ? unreadMails : "9+"}
+                label={unreadMails < 10 ? unreadMails : 9}
                 size="small"
                 color="primary"
                 className={styles["mail-unread"]}
@@ -53,11 +76,7 @@ export default function UserAvatar() {
           )}
           Mail
         </MenuItem>
-        <MenuItem className="iconed-text">
-          <PersonIcon />
-          Profile
-        </MenuItem>
-        <MenuItem className="iconed-text">
+        <MenuItem className="iconed-text" onClick={() => signOut()}>
           <LogoutIcon />
           Log Out
         </MenuItem>

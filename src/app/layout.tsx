@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 import { Roboto } from "next/font/google";
-import AppThemeProvider from "@/theme";
+import AppThemeProvider from "@/providers/AppThemeProvider";
+import AppAuthProvider from "@/providers/AppAuthProvider";
 
 export const metadata: Metadata = {
   title: "Dragon Hunt",
@@ -29,7 +30,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.className} antialiased`}>
         <AppRouterCacheProvider>
-          <AppThemeProvider>{children}</AppThemeProvider>
+          <AppAuthProvider>
+            <AppThemeProvider>{children}</AppThemeProvider>
+          </AppAuthProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

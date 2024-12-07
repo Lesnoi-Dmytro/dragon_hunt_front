@@ -3,7 +3,7 @@
 import { Box, Card, IconButton, Tooltip, Typography } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
-import UserAvatar from "../user/UserAvatar";
+import UserAvatar from "./user/UserAvatar";
 import Sidebar from "./Sidebar";
 import { memo, useState } from "react";
 
@@ -23,7 +23,7 @@ export default memo(function MainHeader() {
           </IconButton>
           <Box className="hidden md:flex items-center gap-4">
             <Image
-              src="/logo.svg"
+              src="/images/three_dragons.svg"
               alt="Dragon"
               width={50}
               height={50}
