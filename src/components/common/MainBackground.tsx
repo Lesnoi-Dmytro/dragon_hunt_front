@@ -15,6 +15,7 @@ export default function MainBackground({
         alt="Dragon"
         width={200}
         height={200}
+        priority={true}
       />
       <Image
         className={`absolute top-4 right-4 dark-invert ${styles["background-image"]}`}
@@ -22,6 +23,7 @@ export default function MainBackground({
         alt="Dragon Breath"
         width={200}
         height={200}
+        priority={true}
       />
       <Image
         className={`absolute bottom-4 right-4 dark-invert ${styles["background-image"]}`}
@@ -29,6 +31,7 @@ export default function MainBackground({
         alt="Snake"
         width={200}
         height={200}
+        priority={true}
       />
       <Image
         className={`absolute top-4 left-4 dark-invert ${styles["background-image"]}`}
@@ -36,6 +39,7 @@ export default function MainBackground({
         alt="Snake"
         width={200}
         height={200}
+        priority={true}
       />
       <Box className="z-10 relative w-full h-full">{children}</Box>
     </Box>

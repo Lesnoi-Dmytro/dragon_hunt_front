@@ -3,12 +3,12 @@ import MainHeader from "@/components/common/navigation/header/MainHeader";
 
 import { getServerSession } from "next-auth";
 import React, { Suspense } from "react";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { apiServer } from "@/utils/axios/api";
 import { UserInfo, UserInfoResponse } from "@/types/user/UserInfo";
 import AuthUser from "@/types/auth/AuthUser";
 import UserProvider from "@/providers/UserProvider";
 import HubSkeleton from "@/components/common/HubSkeleton";
+import authOptions from "@/app/api/auth/[...nextauth]/authOptions";
 
 async function getUserInfo(): Promise<UserInfo> {
   const session = await getServerSession(authOptions);

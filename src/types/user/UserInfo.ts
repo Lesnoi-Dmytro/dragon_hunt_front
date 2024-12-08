@@ -4,10 +4,14 @@ export interface UserInfo extends UserInfoResponse {
   image?: string;
 }
 
-export interface UserInfoResponse {
+export interface UserInfoResponse extends EnergyInfoResponse {
   level: number;
-  energy: number;
-  recoveredAt: Date;
   gold: number;
   exp: number;
+  unreadEmails: number;
+}
+
+export interface EnergyInfoResponse {
+  energy: number;
+  recoverAt: Date;
 }
