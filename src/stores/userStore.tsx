@@ -6,29 +6,8 @@ import { devtools } from "zustand/middleware";
 interface UserStore extends UserInfo {
   loaded: boolean;
   energyTimeout: NodeJS.Timeout | null;
+  startCheckEnergyTimeout: (recoverAt: Date) => void;
   setUserInfo: (user: UserInfo) => void;
-}
-
-function startCheckEnergyTimeout(set: any, recoverAt: Date) {
-  const checkTime = recoverAt.getTime() - Date.now();
-
-  return setTimeout(async () => {
-    const energyInfo = (await apiClient.get("users/me/energy")).data;
-    const energyTimeout = startCheckEnergyTimeout(
-      set,
-      new Date(energyInfo.recoverAt)
-    );
-
-    set(
-      {
-        energy: energyInfo.energy,
-        recoverAt: new Date(energyInfo.recoverAt),
-        energyTimeout,
-      },
-      false,
-      "setUserEnergy"
-    );
-  }, checkTime);
 }
 
 const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
@@ -36,7 +15,6 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
   get
 ) => ({
   loaded: false,
-  energyTimeout: null,
   id: "0",
   name: "",
   email: "",
@@ -46,19 +24,44 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
   unreadEmails: 0,
   gold: 0,
   exp: 0,
-  setUserInfo: (user: UserInfo) => {
+  energyTimeout: null,
+  startCheckEnergyTimeout: (recoverAt: Date) => {
     let energyTimeout = get().energyTimeout;
     if (energyTimeout) {
       clearTimeout(energyTimeout);
     }
-    energyTimeout = startCheckEnergyTimeout(set, new Date(user.recoverAt));
+
+    const checkTime = recoverAt.getTime() - Date.now();
+    energyTimeout = setTimeout(async () => {
+      const energyInfo = (await apiClient.get("users/me/energy")).data;
+      set(
+        {
+          energy: energyInfo.energy,
+          recoverAt: new Date(energyInfo.recoverAt),
+        },
+        false,
+        "setUserEnergy"
+      );
+
+      get().startCheckEnergyTimeout(new Date(energyInfo.recoverAt));
+    }, checkTime);
+
+    set(
+      {
+        energyTimeout,
+      },
+      false,
+      "setEnergyTimeout"
+    );
+  },
+  setUserInfo: (user: UserInfo) => {
+    get().startCheckEnergyTimeout(new Date(user.recoverAt));
 
     set(
       {
         loaded: true,
         ...user,
         recoverAt: new Date(user.recoverAt),
-        energyTimeout,
       },
       false,
       "setUserInfo"
