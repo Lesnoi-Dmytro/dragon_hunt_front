@@ -2,7 +2,7 @@
 
 import useUserStore from "@/stores/userStore";
 import { UserInfo } from "@/types/user/UserInfo";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 export default memo(function UserProvider({
   userInfo,
@@ -10,7 +10,10 @@ export default memo(function UserProvider({
   userInfo: UserInfo;
 }>) {
   const setUserInfo = useUserStore((store) => store.setUserInfo);
-  setUserInfo(userInfo);
+
+  useEffect(() => {
+    setUserInfo(userInfo);
+  }, [userInfo, setUserInfo]);
 
   return null;
 });

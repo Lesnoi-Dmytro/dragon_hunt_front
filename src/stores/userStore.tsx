@@ -21,7 +21,7 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
   level: 1,
   energy: 0,
   recoverAt: new Date(),
-  unreadEmails: 0,
+  unreadMails: 0,
   gold: 0,
   exp: 0,
   energyTimeout: null,

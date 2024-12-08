@@ -8,7 +8,7 @@ export interface UserInfoResponse extends EnergyInfoResponse {
   level: number;
   gold: number;
   exp: number;
-  unreadEmails: number;
+  unreadMails: number;
 }
 
 export interface EnergyInfoResponse {

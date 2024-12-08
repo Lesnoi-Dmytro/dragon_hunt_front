@@ -22,6 +22,7 @@ import useUserStore from "@/stores/userStore";
 export default function UserAvatar() {
   const image = useUserStore((store) => store.image);
   const name = useUserStore((store) => store.name);
+  const unreadMails = useUserStore((store) => store.unreadMails);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,8 +31,6 @@ export default function UserAvatar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const [unreadMails] = useState<number>(9);
 
   return (
     <>
