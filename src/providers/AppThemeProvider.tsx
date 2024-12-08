@@ -60,6 +60,9 @@ const AppThemeProvider = ({
         },
         components: {
           MuiTooltip: {
+            defaultProps: {
+              enterTouchDelay: 0,
+            },
             styleOverrides: {
               tooltip: {
                 fontSize: "1em",

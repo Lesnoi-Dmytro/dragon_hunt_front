@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import AuthUser from "@/types/auth/AuthUser";
@@ -6,7 +6,7 @@ import CustomJwt from "@/types/auth/CustomJwt";
 import { apiServer } from "@/utils/axios/api";
 import AuthResponse from "@/types/auth/AuthResponse";
 
-const handler = NextAuth({
+export const authOptions: AuthOptions = {
   session: {
     strategy: "jwt",
   },
@@ -85,6 +85,8 @@ const handler = NextAuth({
       return customJwt;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

@@ -1,13 +1,13 @@
 "use client";
 
-import { Box, Card, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, Card, IconButton, Skeleton, Typography } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
-import UserAvatar from "./user/UserAvatar";
-import Sidebar from "./Sidebar";
-import { memo, useState } from "react";
+import Sidebar from "../Sidebar";
+import { useState } from "react";
+import UserAvatarSkeleton from "../user/UserAvatarSkeleton";
 
-export default memo(function MainHeader() {
+export default function MainHeaderSkeleton() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const toggleSidebar = () => {
@@ -33,20 +33,27 @@ export default memo(function MainHeader() {
           </Box>
         </Box>
         <Box className="flex items-center gap-4">
-          <Tooltip title="21:29 left" arrow={true} disableInteractive>
-            <Box className="flex items-center gap-1">
-              <Typography variant="h5">5/5</Typography>
-              <Image
-                src="/images/energy.svg"
-                alt="energy"
-                width={24}
-                height={24}
-                className="dark-invert"
-              />
-            </Box>
-          </Tooltip>
+          <Box className="flex items-center gap-1">
+            <Skeleton
+              variant="text"
+              width={"1rem"}
+              sx={{ fontSize: "1.5rem" }}
+            />
+            <Typography variant="h5">/5</Typography>
+            <Image
+              src="/images/energy.svg"
+              alt="energy"
+              width={24}
+              height={24}
+              className="dark-invert"
+            />
+          </Box>
           <Box className="flex items-center gap-2">
-            <Typography variant="h5">1000</Typography>
+            <Skeleton
+              variant="text"
+              width={"3rem"}
+              sx={{ fontSize: "1.5rem" }}
+            />
             <Image
               src="/images/coin_bag.svg"
               alt="coin bag"
@@ -56,10 +63,10 @@ export default memo(function MainHeader() {
             />
           </Box>
 
-          <UserAvatar />
+          <UserAvatarSkeleton />
         </Box>
       </Card>
       <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
     </header>
   );
-});
+}
