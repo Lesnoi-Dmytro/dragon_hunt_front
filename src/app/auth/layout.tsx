@@ -1,5 +1,6 @@
 import MainBackground from "@/components/common/MainBackground";
-import { Card, Box } from "@mui/material";
+import { Card, Box, Skeleton } from "@mui/material";
+import { Suspense } from "react";
 
 export default function RootLayout({
   children,
@@ -9,12 +10,22 @@ export default function RootLayout({
   return (
     <MainBackground>
       <Box className="flex items-center justify-center h-full">
-        <Card
-          className="w-4/5 md:w-2/5 lg:w-1/4"
-          sx={{ borderRadius: "1.5rem" }}
+        <Suspense
+          fallback={
+            <Skeleton
+              className="w-4/5 md:w-2/5"
+              height={460}
+              sx={{ borderRadius: "1.5rem" }}
+            />
+          }
         >
-          <Box className="p-10">{children}</Box>
-        </Card>
+          <Card
+            className="w-4/5 md:w-2/5 lg:w-1/4"
+            sx={{ borderRadius: "1.5rem" }}
+          >
+            <Box className="p-10">{children}</Box>
+          </Card>
+        </Suspense>
       </Box>
     </MainBackground>
   );

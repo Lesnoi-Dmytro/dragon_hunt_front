@@ -16,7 +16,7 @@ import { OverridableComponent } from "@mui/material/OverridableComponent";
 type ModeItem = {
   name: string;
   value: string;
-  icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
+  icon: OverridableComponent<SvgIconTypeMap<object, "svg">>;
 };
 
 export default function ThemeSwitch() {

@@ -69,6 +69,7 @@ const AppThemeProvider = ({
           MuiSkeleton: {
             defaultProps: {
               animation: "wave",
+              variant: "rounded",
             },
           },
           MuiSnackbar: {
