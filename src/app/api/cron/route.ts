@@ -1,5 +1,4 @@
 import { apiServer } from "@/utils/axios/api";
-import axios from "axios";
 import { NextResponse } from "next/server";
 
 import cron from "node-cron";
