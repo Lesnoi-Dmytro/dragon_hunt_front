@@ -10,8 +10,12 @@ import UserProvider from "@/providers/MeProvider";
 import HubSkeleton from "@/components/common/HubSkeleton";
 import authOptions from "@/app/api/auth/[...nextauth]/authOptions";
 
-async function getUserInfo(): Promise<MyInfo> {
+async function getUserInfo(): Promise<MyInfo | undefined> {
   const session = await getServerSession(authOptions);
+  if (!session) {
+    return undefined;
+  }
+
   const user = session?.user as AuthUser;
 
   const userInfo = (await apiServer.get<MyInfoResponse>("/users/me")).data;

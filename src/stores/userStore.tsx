@@ -7,6 +7,7 @@ interface UserStore extends MyInfo {
   loaded: boolean;
   energyTimeout: NodeJS.Timeout | null;
   startCheckEnergyTimeout: (recoverAt: Date) => void;
+  updateEnergy: () => void;
   setUserInfo: (user: MyInfo) => void;
 }
 
@@ -33,18 +34,11 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
     }
 
     const checkTime = recoverAt.getTime() - Date.now();
+    if (checkTime < 0) {
+      return;
+    }
     energyTimeout = setTimeout(async () => {
-      const energyInfo = (await apiClient.get("users/me/energy")).data;
-      set(
-        {
-          energy: energyInfo.energy,
-          recoverAt: new Date(energyInfo.recoverAt),
-        },
-        false,
-        "setUserEnergy"
-      );
-
-      get().startCheckEnergyTimeout(new Date(energyInfo.recoverAt));
+      get().updateEnergy();
     }, checkTime);
 
     set(
@@ -54,6 +48,19 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
       false,
       "setEnergyTimeout"
     );
+  },
+  updateEnergy: async () => {
+    const energyInfo = (await apiClient.get("users/me/energy")).data;
+    set(
+      {
+        energy: energyInfo.energy,
+        recoverAt: new Date(energyInfo.recoverAt),
+      },
+      false,
+      "updateUserEnergy"
+    );
+
+    get().startCheckEnergyTimeout(new Date(energyInfo.recoverAt));
   },
   setUserInfo: (user: MyInfo) => {
     get().startCheckEnergyTimeout(new Date(user.recoverAt));

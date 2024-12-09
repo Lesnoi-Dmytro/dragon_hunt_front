@@ -28,7 +28,7 @@ export default function EnergyTimer() {
 
   return (
     <>
-      {minutes}:{seconds}
+      {minutes}:{seconds.toString().padStart(2, "0")}
     </>
   );
 }

@@ -2,13 +2,14 @@ import AuthResponse from "@/types/auth/AuthResponse";
 import AuthUser from "@/types/auth/AuthUser";
 import CustomJwt from "@/types/auth/CustomJwt";
 import { apiServer } from "@/utils/axios/api";
-import { AuthOptions } from "next-auth";
+import { AuthOptions, Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const authOptions: AuthOptions = {
   session: {
     strategy: "jwt",
+    maxAge: 7 * 24 * 60 * 60,
   },
   jwt: {
     maxAge: 7 * 24 * 60 * 60,
@@ -83,6 +84,16 @@ const authOptions: AuthOptions = {
       }
 
       return customJwt;
+    },
+    async session({ session, token }): Promise<Session> {
+      const customJwt = token as CustomJwt;
+
+      session.user = {
+        ...session.user,
+        backendToken: customJwt.backend_token,
+        id: customJwt.sub || "",
+      } as AuthUser;
+      return session;
     },
   },
 };
