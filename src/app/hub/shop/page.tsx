@@ -1,3 +1,3 @@
-export default function Combat() {
+export default function Shop() {
   return <></>;
 }
