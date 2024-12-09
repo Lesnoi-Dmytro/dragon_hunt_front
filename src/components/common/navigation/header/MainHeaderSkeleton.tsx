@@ -5,7 +5,7 @@ import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "../Sidebar";
 import { useState } from "react";
-import UserAvatarSkeleton from "../user/UserAvatarSkeleton";
+import UserAvatarSkeleton from "../user/MyAvatarSkeleton";
 
 export default function MainHeaderSkeleton() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);

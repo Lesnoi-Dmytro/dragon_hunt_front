@@ -1,13 +1,14 @@
-export interface UserInfo extends UserInfoResponse {
+export interface MyInfo extends MyInfoResponse {
   name: string;
   email: string;
   image?: string;
 }
 
-export interface UserInfoResponse extends EnergyInfoResponse {
+export interface MyInfoResponse extends EnergyInfoResponse {
   level: number;
   gold: number;
   exp: number;
+  expNeeded: number;
   unreadMails: number;
 }
 

@@ -1,13 +1,13 @@
-import { UserInfo } from "@/types/user/UserInfo";
+import { MyInfo } from "@/types/user/MyInfo";
 import { apiClient } from "@/utils/axios/api";
 import { create, StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";
 
-interface UserStore extends UserInfo {
+interface UserStore extends MyInfo {
   loaded: boolean;
   energyTimeout: NodeJS.Timeout | null;
   startCheckEnergyTimeout: (recoverAt: Date) => void;
-  setUserInfo: (user: UserInfo) => void;
+  setUserInfo: (user: MyInfo) => void;
 }
 
 const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
@@ -24,6 +24,7 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
   unreadMails: 0,
   gold: 0,
   exp: 0,
+  expNeeded: 0,
   energyTimeout: null,
   startCheckEnergyTimeout: (recoverAt: Date) => {
     let energyTimeout = get().energyTimeout;
@@ -54,7 +55,7 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
       "setEnergyTimeout"
     );
   },
-  setUserInfo: (user: UserInfo) => {
+  setUserInfo: (user: MyInfo) => {
     get().startCheckEnergyTimeout(new Date(user.recoverAt));
 
     set(

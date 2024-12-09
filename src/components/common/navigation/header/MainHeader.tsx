@@ -3,10 +3,10 @@
 import { Box, Card, IconButton, Typography } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
-import UserAvatar from "../user/UserAvatar";
+import UserAvatar from "../user/MyAvatar";
 import Sidebar from "../Sidebar";
 import { memo, useState } from "react";
-import UserResources from "./UserResources";
+import UserResources from "./MyResources";
 import useUserStore from "@/stores/userStore";
 import MainHeaderSkeleton from "./MainHeaderSkeleton";
 
