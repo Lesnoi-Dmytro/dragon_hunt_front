@@ -1,5 +1,5 @@
 import MainBackground from "@/components/common/MainBackground";
-import MainHeader from "@/components/common/navigation/header/MainHeader";
+import MainHeader from "@/components/common/navigation/header/HubHeader";
 
 import React from "react";
 import UserProvider from "@/providers/MeProvider";

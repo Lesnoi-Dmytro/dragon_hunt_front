@@ -27,8 +27,8 @@ export default function Sidebar({ open, onClose }: Props) {
 
   const navItems: NavItem[] = [
     {
-      path: "/hub/combat",
-      text: "Combat",
+      path: "/hub/battles",
+      text: "Battles",
       icon: "/images/swords.svg",
     },
     {

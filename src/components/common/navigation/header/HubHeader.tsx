@@ -8,7 +8,7 @@ import Sidebar from "../Sidebar";
 import { memo, useState } from "react";
 import UserResources from "./MyResources";
 import useUserStore from "@/stores/userStore";
-import MainHeaderSkeleton from "./MainHeaderSkeleton";
+import MainHeaderSkeleton from "./HubHeaderSkeleton";
 
 export default memo(function MainHeader() {
   const loaded = useUserStore((store) => store.loaded);

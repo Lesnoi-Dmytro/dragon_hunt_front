@@ -1,5 +1,5 @@
 import MainBackground from "./MainBackground";
-import MainHeaderSkeleton from "./navigation/header/MainHeaderSkeleton";
+import MainHeaderSkeleton from "./navigation/header/HubHeaderSkeleton";
 
 export default function HubSkeleton() {
   return (

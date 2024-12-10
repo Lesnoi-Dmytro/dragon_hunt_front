@@ -10,29 +10,34 @@ import { memo, useEffect } from "react";
 export default memo(function UserProvider() {
   const session = useSession();
   const setUserInfo = useUserStore((store) => store.setUserInfo);
+  const loaded = useUserStore((store) => store.loaded);
 
   useEffect(() => {
     const getUserInfo = async (): Promise<MyInfo | undefined> => {
-      if (!session) {
+      if (loaded || session.status !== "authenticated") {
         return;
       }
 
       const user = session?.data?.user as AuthUser;
+      try {
+        const userInfo = (await apiClient.get<MyInfoResponse>("/users/me"))
+          .data;
 
-      const userInfo = (await apiClient.get<MyInfoResponse>("/users/me")).data;
-
-      if (userInfo) {
-        setUserInfo({
-          name: user?.name || "",
-          email: user?.email || "",
-          image: user?.image || undefined,
-          ...userInfo,
-        });
+        if (userInfo) {
+          setUserInfo({
+            name: user?.name || "",
+            email: user?.email || "",
+            image: user?.image || undefined,
+            ...userInfo,
+          });
+        }
+      } catch (err) {
+        console.log(err);
       }
     };
 
     getUserInfo();
-  }, [session, setUserInfo]);
+  }, [loaded, session, setUserInfo]);
 
   return null;
 });
