@@ -13,14 +13,14 @@ export default function RootLayout({
         <Suspense
           fallback={
             <Skeleton
-              className="w-4/5 md:w-2/5"
+              className="w-96"
               height={460}
               sx={{ borderRadius: "1.5rem" }}
             />
           }
         >
           <Card
-            className="w-4/5 md:w-2/5 lg:w-1/4"
+            className="w-[350px] md:w-[400px]"
             sx={{ borderRadius: "1.5rem" }}
           >
             <Box className="p-10">{children}</Box>

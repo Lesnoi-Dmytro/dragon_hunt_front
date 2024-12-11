@@ -5,7 +5,7 @@ import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "../Sidebar";
 import { useState } from "react";
-import UserAvatarSkeleton from "../user/MyAvatarSkeleton";
+import MyAvatarSkeleton from "../../user/MyAvatarSkeleton";
 
 export default function MainHeaderSkeleton() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -28,6 +28,7 @@ export default function MainHeaderSkeleton() {
               width={50}
               height={50}
               className="dark-invert"
+              priority={true}
             />
             <Typography variant="h4">Dragon Hunt</Typography>
           </Box>
@@ -63,7 +64,7 @@ export default function MainHeaderSkeleton() {
             />
           </Box>
 
-          <UserAvatarSkeleton />
+          <MyAvatarSkeleton />
         </Box>
       </Card>
       <Sidebar open={sidebarOpen} onClose={toggleSidebar} />

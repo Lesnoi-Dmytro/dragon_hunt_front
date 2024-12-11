@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 
-export default function UserAvatarSkeleton() {
+export default function MyAvatarSkeleton() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);

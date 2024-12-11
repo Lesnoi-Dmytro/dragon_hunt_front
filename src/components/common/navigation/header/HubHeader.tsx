@@ -3,7 +3,7 @@
 import { Box, Card, IconButton, Typography } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
-import UserAvatar from "../user/MyAvatar";
+import MyAvatar from "../../user/MyAvatar";
 import Sidebar from "../Sidebar";
 import { memo, useState } from "react";
 import UserResources from "./MyResources";
@@ -14,13 +14,13 @@ export default memo(function MainHeader() {
   const loaded = useUserStore((store) => store.loaded);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-  if (!loaded) {
-    return <MainHeaderSkeleton />;
-  }
-
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  if (!loaded) {
+    return <MainHeaderSkeleton />;
+  }
 
   return (
     <header>
@@ -36,13 +36,14 @@ export default memo(function MainHeader() {
               width={50}
               height={50}
               className="dark-invert"
+              priority={true}
             />
             <Typography variant="h4">Dragon Hunt</Typography>
           </Box>
         </Box>
         <Box className="flex items-center gap-4">
           <UserResources />
-          <UserAvatar />
+          <MyAvatar />
         </Box>
       </Card>
       <Sidebar open={sidebarOpen} onClose={toggleSidebar} />

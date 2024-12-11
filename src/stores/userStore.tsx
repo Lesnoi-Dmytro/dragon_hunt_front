@@ -1,14 +1,17 @@
-import { MyInfo } from "@/types/user/MyInfo";
+import { MyInfo, MyInfoResponse } from "@/types/user/MyInfo";
 import { apiClient } from "@/utils/axios/api";
+import { getSession } from "next-auth/react";
 import { create, StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";
 
 interface UserStore extends MyInfo {
   loaded: boolean;
+  imageLoaded: boolean;
+  image?: string;
   energyTimeout: NodeJS.Timeout | null;
   startCheckEnergyTimeout: (recoverAt: Date) => void;
   updateEnergy: () => void;
-  setUserInfo: (user: MyInfo) => void;
+  fetchUserInfo: () => Promise<void>;
 }
 
 const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
@@ -16,6 +19,7 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
   get
 ) => ({
   loaded: false,
+  imageLoaded: false,
   id: "0",
   name: "",
   email: "",
@@ -62,18 +66,53 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
 
     get().startCheckEnergyTimeout(new Date(energyInfo.recoverAt));
   },
-  setUserInfo: (user: MyInfo) => {
-    get().startCheckEnergyTimeout(new Date(user.recoverAt));
+  fetchUserInfo: async () => {
+    try {
+      const user = getSession();
+      const userInfo = (await apiClient.get<MyInfoResponse>("/users/me")).data;
+      userInfo.recoverAt = new Date(userInfo.recoverAt);
 
-    set(
-      {
-        loaded: true,
-        ...user,
-        recoverAt: new Date(user.recoverAt),
-      },
-      false,
-      "setUserInfo"
-    );
+      get().startCheckEnergyTimeout(userInfo.recoverAt);
+
+      set(
+        {
+          loaded: true,
+          imageLoaded: false,
+          image: undefined,
+          ...user,
+          ...userInfo,
+        },
+        false,
+        "setUserInfo"
+      );
+
+      const imageBlob = await apiClient.get("users/me/image", {
+        responseType: "blob",
+      });
+
+      if (imageBlob.data) {
+        const image = URL.createObjectURL(imageBlob.data);
+
+        set(
+          {
+            imageLoaded: true,
+            image,
+          },
+          false,
+          "setImage"
+        );
+      } else {
+        set(
+          {
+            imageLoaded: true,
+          },
+          false,
+          "noImage"
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
   },
 });
 

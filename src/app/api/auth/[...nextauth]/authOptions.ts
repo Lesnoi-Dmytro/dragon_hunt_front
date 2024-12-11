@@ -34,7 +34,6 @@ const authOptions: AuthOptions = {
             id: user.id,
             email: user.email,
             name: user.name,
-            image: user.image,
             backendToken: user.token,
           };
         } catch (err) {
@@ -58,6 +57,7 @@ const authOptions: AuthOptions = {
     },
     async jwt({ token, user, account }): Promise<CustomJwt> {
       const customJwt = token as CustomJwt;
+
       if (customJwt.backend_token) {
         return customJwt;
       }
@@ -72,7 +72,6 @@ const authOptions: AuthOptions = {
         customJwt.sub = authResponse.id;
         customJwt.email = authResponse.email;
         customJwt.name = authResponse.name;
-        customJwt.picture = authResponse.image;
         customJwt.backend_token = authResponse.token;
       } else {
         const authUser = user as AuthUser;

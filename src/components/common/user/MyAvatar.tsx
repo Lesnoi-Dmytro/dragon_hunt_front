@@ -6,7 +6,6 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import GroupIcon from "@mui/icons-material/Group";
 
 import {
-  Avatar,
   Box,
   Chip,
   CircularProgress,
@@ -19,9 +18,12 @@ import {
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 import useUserStore from "@/stores/userStore";
+import UserAvatar from "./UserAvatar";
 
-export default function UserAvatar() {
+export default function MyAvatar() {
   const image = useUserStore((store) => store.image);
+  const imageLoaded = useUserStore((store) => store.imageLoaded);
+
   const name = useUserStore((store) => store.name);
   const level = useUserStore((store) => store.level);
   const exp = useUserStore((store) => store.exp);
@@ -39,7 +41,7 @@ export default function UserAvatar() {
   return (
     <>
       <IconButton onClick={handleClick} className="relative">
-        <Avatar src={image}>{name.charAt(0)}</Avatar>
+        <UserAvatar src={image} name={name} loaded={imageLoaded} />
         <CircularProgress
           className="absolute"
           size={40}

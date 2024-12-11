@@ -36,6 +36,7 @@ export default function SignInForm() {
       <TextField
         label="Email"
         type="email"
+        name="email"
         margin="dense"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
@@ -44,6 +45,7 @@ export default function SignInForm() {
       <TextField
         label="Password"
         type="password"
+        name="password"
         margin="dense"
         value={password}
         onChange={(e) => setPassword(e.target.value)}

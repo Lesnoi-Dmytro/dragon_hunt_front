@@ -165,6 +165,7 @@ export default function SignUpForm() {
         loading={emailCheck}
         label="Email"
         type="email"
+        name="email"
         margin="dense"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -180,6 +181,7 @@ export default function SignUpForm() {
         valid={usernameValid}
         loading={usernameCheck}
         label="Username"
+        name="username"
         type="text"
         margin="dense"
         value={username}
@@ -194,6 +196,7 @@ export default function SignUpForm() {
       />
       <PasswordField
         label="Password"
+        name="password"
         margin="dense"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -205,6 +208,7 @@ export default function SignUpForm() {
       />
       <PasswordField
         label="Repeat Password"
+        name="repeatPassword"
         margin="dense"
         value={repeatPassword}
         onChange={(e) => setRepeatPassword(e.target.value)}
