@@ -9,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <MainBackground>
-      <Box className="flex items-center justify-center h-full">
+      <Box className="flex flex-col items-center justify-center h-full">
         <Suspense
           fallback={
             <Skeleton
@@ -23,7 +23,7 @@ export default function RootLayout({
             className="w-[350px] md:w-[400px]"
             sx={{ borderRadius: "1.5rem" }}
           >
-            <Box className="p-10">{children}</Box>
+            <Box className="h-full overflow-auto p-10">{children}</Box>
           </Card>
         </Suspense>
       </Box>

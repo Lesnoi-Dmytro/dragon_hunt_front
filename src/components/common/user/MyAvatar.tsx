@@ -1,4 +1,3 @@
-import styles from "@/styles/common/MainLayout.module.css";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MailIcon from "@mui/icons-material/Mail";
@@ -43,21 +42,21 @@ export default function MyAvatar() {
       <IconButton onClick={handleClick} className="relative">
         <UserAvatar src={image} name={name} loaded={imageLoaded} />
         <CircularProgress
-          className="absolute"
-          size={40}
+          className="absolute top-[7px] left-[7px] z-10"
+          size={42}
           variant="determinate"
           thickness={4}
           value={(exp / expNeeded) * 100}
         />
-        <Chip
-          label={level}
-          size="small"
-          color="primary"
+
+        <Box
+          className="absolute bottom-0 z-20 flex items-center justify-center w-6 h-6 rounded-full text-sm"
           sx={{
-            color: "white",
+            backgroundColor: "primary.main",
           }}
-          className="absolute bottom-0"
-        />
+        >
+          {level}
+        </Box>
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <Box className="flex flex-col gap-2 px-4 pt-1 pb-2">
@@ -81,7 +80,7 @@ export default function MyAvatar() {
                 label={unreadMails < 10 ? unreadMails : 9}
                 size="small"
                 color="primary"
-                className={styles["mail-unread"]}
+                className="absolute z-10 -top-2 -right-2"
               />
             </Box>
           ) : (

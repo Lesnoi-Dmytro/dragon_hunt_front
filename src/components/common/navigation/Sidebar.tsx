@@ -27,7 +27,7 @@ export default function Sidebar({ open, onClose }: Props) {
 
   const navItems: NavItem[] = [
     {
-      path: "/hub/battles",
+      path: "/hub/battles/resources",
       text: "Battles",
       icon: "/images/swords.svg",
     },
@@ -70,7 +70,6 @@ export default function Sidebar({ open, onClose }: Props) {
                     alt={item.text}
                     height={36}
                     width={36}
-                    className="dark-invert"
                   />
                 </ListItemIcon>
                 <ListItemText

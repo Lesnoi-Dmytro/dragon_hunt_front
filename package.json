@@ -17,12 +17,14 @@
     "@mui/material": "^6.1.10",
     "@mui/material-nextjs": "^6.1.9",
     "axios": "^1.7.9",
+    "axios-cache-interceptor": "^1.6.2",
     "lodash": "^4.17.21",
     "next": "15.0.3",
     "next-auth": "^4.24.11",
     "node-cron": "^3.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "sharp": "^0.33.5",
     "zustand": "^5.0.2"
   },
   "devDependencies": {

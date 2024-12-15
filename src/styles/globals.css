@@ -2,16 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  display: flex;
-  min-width: 100%;
-  min-height: 100%;
+.MuiTable-root::-webkit-scrollbar,
+.MuiBox-root::-webkit-scrollbar,
+.MuiPaper-root::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.MuiTable-root::-webkit-scrollbar-thumb,
+.MuiBox-root::-webkit-scrollbar-thumb,
+.MuiPaper-root::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.MuiTable-root::-webkit-scrollbar-track,
+.MuiBox-root::-webkit-scrollbar-track,
+.MuiPaper-root::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  width: 100vw;
+  height: 100vh;
 }
 
 .mirror-x {
@@ -29,7 +44,12 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark .dark-invert {
+  .dark img {
     filter: invert(100%);
+  }
+
+  .dark .no-invert img,
+  .dark .no-invert svg {
+    filter: invert(0%);
   }
 }

@@ -27,7 +27,6 @@ export default function MainHeaderSkeleton() {
               alt="Dragon"
               width={50}
               height={50}
-              className="dark-invert"
               priority={true}
             />
             <Typography variant="h4">Dragon Hunt</Typography>
@@ -37,16 +36,14 @@ export default function MainHeaderSkeleton() {
           <Box className="flex items-center gap-1">
             <Skeleton
               variant="text"
-              width={"1rem"}
+              width={"3rem"}
               sx={{ fontSize: "1.5rem" }}
             />
-            <Typography variant="h5">/5</Typography>
             <Image
               src="/images/energy.svg"
               alt="energy"
               width={24}
               height={24}
-              className="dark-invert"
             />
           </Box>
           <Box className="flex items-center gap-2">
@@ -60,7 +57,6 @@ export default function MainHeaderSkeleton() {
               alt="coin bag"
               width={24}
               height={24}
-              className="dark-invert"
             />
           </Box>
 

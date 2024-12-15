@@ -35,7 +35,6 @@ export default memo(function MainHeader() {
               alt="Dragon"
               width={50}
               height={50}
-              className="dark-invert"
               priority={true}
             />
             <Typography variant="h4">Dragon Hunt</Typography>

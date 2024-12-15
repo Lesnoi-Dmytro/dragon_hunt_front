@@ -1,4 +1,3 @@
-import styles from "@/styles/common/MainLayout.module.css";
 import { Box } from "@mui/material";
 import Image from "next/image";
 
@@ -8,39 +7,50 @@ export default function MainBackground({
   children: React.ReactNode;
 }>) {
   return (
-    <Box className="flex-1 relative" sx={{ backgroundColor: "secondary.main" }}>
-      <Image
-        className={`absolute bottom-4 left-4 mirror-x dark-invert ${styles["background-image"]}`}
-        src="/images/dragon2.svg"
-        alt="Dragon"
-        width={200}
-        height={200}
-        priority={true}
-      />
-      <Image
-        className={`absolute top-4 right-4 dark-invert ${styles["background-image"]}`}
-        src="/images/three_dragons.svg"
-        alt="Dragon Breath"
-        width={200}
-        height={200}
-        priority={true}
-      />
-      <Image
-        className={`absolute bottom-4 right-4 dark-invert ${styles["background-image"]}`}
-        src="/images/goblin.svg"
-        alt="Snake"
-        width={200}
-        height={200}
-        priority={true}
-      />
-      <Image
-        className={`absolute top-4 left-4 dark-invert ${styles["background-image"]}`}
-        src="/images/dragon3.svg"
-        alt="Snake"
-        width={200}
-        height={200}
-        priority={true}
-      />
+    <Box
+      className="h-0 flex-1 relative p-4 md:p-12"
+      sx={{ backgroundColor: "secondary.main" }}
+    >
+      <Box className="absolute bottom-4 left-4 mirror-x w-36 h-36 md:w-52 md:h-52">
+        <Image
+          className="w-full h-full"
+          src="/images/dragon2.svg"
+          alt="Dragon"
+          sizes="(max-width: 768px) 208px, 144px"
+          priority={true}
+          fill
+        />
+      </Box>
+      <Box className="absolute top-4 right-4 w-36 h-36 md:w-52 md:h-52">
+        <Image
+          className="w-full h-full"
+          src="/images/three_dragons.svg"
+          alt="Dragon Breath"
+          sizes="(max-width: 768px) 208px, 144px"
+          priority={true}
+          fill
+        />
+      </Box>
+      <Box className="absolute bottom-4 right-4 w-36 h-36 md:w-52 md:h-52">
+        <Image
+          className="w-full h-full"
+          src="/images/goblin.svg"
+          alt="Snake"
+          sizes="(max-width: 768px) 208px, 144px"
+          priority={true}
+          fill
+        />
+      </Box>
+      <Box className="absolute top-4 left-4 w-36 h-36 md:w-52 md:h-52">
+        <Image
+          className="w-full h-full"
+          src="/images/dragon3.svg"
+          alt="Snake"
+          sizes="(max-width: 768px) 208px, 144px"
+          priority={true}
+          fill
+        />
+      </Box>
       <Box className="z-10 relative w-full h-full">{children}</Box>
     </Box>
   );

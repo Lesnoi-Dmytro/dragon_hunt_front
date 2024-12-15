@@ -9,20 +9,14 @@ export default function UserResources() {
 
   const energyElement = (
     <Box className="flex items-center gap-1">
-      <Typography variant="h5">{energy}/5</Typography>
-      <Image
-        src="/images/energy.svg"
-        alt="energy"
-        width={24}
-        height={24}
-        className="dark-invert"
-      />
+      <Typography variant="h5">{energy}/15</Typography>
+      <Image src="/images/energy.svg" alt="energy" width={24} height={24} />
     </Box>
   );
 
   return (
     <>
-      {energy === 5 ? (
+      {energy === 15 ? (
         energyElement
       ) : (
         <Tooltip
@@ -44,7 +38,6 @@ export default function UserResources() {
           alt="coin bag"
           width={24}
           height={24}
-          className="dark-invert"
         />
       </Box>
     </>
