@@ -8,8 +8,8 @@ export interface BattleResponse {
 }
 
 export enum BattleType {
-  RESOURCES,
-  EQUIPMENT,
+  RESOURCES = "RESOURCES",
+  EQUIPMENT = "EQUIPMENT",
 }
 
 export enum BattleDifficulty {
