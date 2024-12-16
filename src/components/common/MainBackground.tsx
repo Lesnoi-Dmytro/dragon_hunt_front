@@ -17,7 +17,6 @@ export default function MainBackground({
           src="/images/dragon2.svg"
           alt="Dragon"
           sizes="(max-width: 768px) 208px, 144px"
-          priority={true}
           fill
         />
       </Box>
@@ -27,7 +26,6 @@ export default function MainBackground({
           src="/images/three_dragons.svg"
           alt="Dragon Breath"
           sizes="(max-width: 768px) 208px, 144px"
-          priority={true}
           fill
         />
       </Box>
@@ -37,7 +35,6 @@ export default function MainBackground({
           src="/images/goblin.svg"
           alt="Snake"
           sizes="(max-width: 768px) 208px, 144px"
-          priority={true}
           fill
         />
       </Box>
@@ -47,7 +44,6 @@ export default function MainBackground({
           src="/images/dragon3.svg"
           alt="Snake"
           sizes="(max-width: 768px) 208px, 144px"
-          priority={true}
           fill
         />
       </Box>

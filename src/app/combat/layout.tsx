@@ -1,10 +1,8 @@
+import CombatHeader from "@/components/combat/CombatHeader";
 import MainBackground from "@/components/common/MainBackground";
-import MainHeader from "@/components/hub/header/HubHeader";
 import MeProvider from "@/providers/MeProvider";
 
-import React from "react";
-
-export default async function HubLayout({
+export default function CombatLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -13,7 +11,7 @@ export default async function HubLayout({
     <>
       <MeProvider />
 
-      <MainHeader />
+      <CombatHeader />
       <MainBackground>{children}</MainBackground>
     </>
   );

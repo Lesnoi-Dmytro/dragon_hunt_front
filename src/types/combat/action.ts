@@ -1,0 +1,7 @@
+export enum Action {
+  DASH = "DASH",
+  ATTACK = "ATTACK",
+  DEFEND = "DEFEND",
+  CAREFULL_STEP = "CAREFULL_STEP",
+  SPECIAL_ACTION = "SPECIAL_ACTION",
+}

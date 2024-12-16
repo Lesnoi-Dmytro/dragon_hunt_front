@@ -50,7 +50,7 @@ export default function MyAvatar() {
         />
 
         <Box
-          className="absolute bottom-0 z-20 flex items-center justify-center w-6 h-6 rounded-full text-sm"
+          className="absolute bottom-0 z-20 flex items-center justify-center w-6 h-6 rounded-full text-sm text-white"
           sx={{
             backgroundColor: "primary.main",
           }}

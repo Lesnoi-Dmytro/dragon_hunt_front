@@ -1,4 +1,4 @@
-import Entity from "@/components/common/Entity";
+import Entity from "@/components/common/EntityChip";
 import { Box, Card } from "@mui/material";
 
 export default async function Combat() {

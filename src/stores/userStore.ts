@@ -1,6 +1,5 @@
 import { MyInfo, MyInfoResponse } from "@/types/user/MyInfo";
-import { apiClient } from "@/utils/axios/api";
-import axios from "axios";
+import { apiClient, apiClientCached } from "@/utils/axios/api";
 import { getSession } from "next-auth/react";
 import { create, StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";
@@ -87,12 +86,9 @@ const userStore: StateCreator<UserStore, [["zustand/devtools", never]]> = (
         "setUserInfo"
       );
 
-      const imageBlob = await axios.get(
-        `${process.env.NEXT_PUBLIC_URL}/api/me/image`,
-        {
-          responseType: "blob",
-        }
-      );
+      const imageBlob = await apiClientCached.get("/users/me/image", {
+        responseType: "blob",
+      });
 
       if (imageBlob.data) {
         const image = URL.createObjectURL(imageBlob.data);

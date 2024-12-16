@@ -1,22 +1,25 @@
 "use client";
 
-import Entity from "@/components/common/Entity";
+import Entity from "@/components/common/EntityChip";
+import LoadingButton from "@/components/common/LoadingButton";
+import { BATTLE_DIFICULTIES } from "@/constants";
 import useUserStore from "@/stores/userStore";
 import {
   BattleDifficulty,
   BattleResponse,
 } from "@/types/battles/battleResponse";
+import { apiClient } from "@/utils/axios/api";
 import {
   Card,
   Box,
   Tooltip,
   Typography,
-  Button,
   Skeleton,
   Select,
   MenuItem,
 } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type Props = {
@@ -24,14 +27,29 @@ type Props = {
 };
 
 export default function EnemyBattle({ battle }: Props) {
+  const router = useRouter();
+
   const userLevel = useUserStore((store) => store.level);
   const userEnergy = useUserStore((store) => store.energy);
+  const disabled = battle.level > userLevel || battle.energy > userEnergy;
 
   const [difficulty, setDifficulty] = useState<BattleDifficulty>(
     BattleDifficulty.NORMAL
   );
 
-  const dissabled = battle.level > userLevel || battle.energy > userEnergy;
+  const [starting, setStarting] = useState(false);
+  const startBattle = async (id: number) => {
+    setStarting(true);
+    try {
+      const battleResponse = await apiClient.post(`/battles/${id}/start`, {
+        difficulty,
+      });
+
+      router.push(`/combat/enemies/${battleResponse.data.combatId}`);
+    } finally {
+      setStarting(false);
+    }
+  };
 
   return (
     <Card
@@ -78,54 +96,40 @@ export default function EnemyBattle({ battle }: Props) {
           onChange={(event) =>
             setDifficulty(event.target.value as BattleDifficulty)
           }
-          disabled={dissabled}
+          disabled={disabled}
           size="small"
           className="w-40"
         >
-          <MenuItem value={BattleDifficulty.NORMAL}>
-            <Box className="flex gap-1">
-              {BattleDifficulty.NORMAL}
-              <Image
-                src="/images/skull.svg"
-                alt="Skull"
-                width={18}
-                height={18}
-              />
-            </Box>
-          </MenuItem>
-          <MenuItem value={BattleDifficulty.HARD} disabled={true}>
-            <Box className="flex gap-1">
-              {BattleDifficulty.HARD}
-              <Image
-                src="/images/skull.svg"
-                alt="Skull"
-                width={18}
-                height={18}
-              />
-            </Box>
-          </MenuItem>
-          <MenuItem value={BattleDifficulty.EXTREME} disabled={true}>
-            <Box className="flex gap-1">
-              {BattleDifficulty.EXTREME}
-              <Image
-                src="/images/skull.svg"
-                alt="Skull"
-                width={18}
-                height={18}
-              />
-            </Box>
-          </MenuItem>
+          {BATTLE_DIFICULTIES.map((difficulty) => (
+            <MenuItem
+              key={difficulty.difficulty}
+              value={difficulty.difficulty}
+              disabled={!difficulty.open}
+            >
+              <Box className="flex gap-1">
+                {difficulty.difficulty}
+                <Image
+                  src={difficulty.image}
+                  alt="Skull"
+                  width={23}
+                  height={23}
+                />
+              </Box>
+            </MenuItem>
+          ))}
         </Select>
 
-        <Button
+        <LoadingButton
           className="w-20 md:w-36 h-10 text-lg self-end"
           variant="contained"
-          disabled={dissabled}
+          disabled={disabled}
           sx={{ fontSize: "1.125rem" }}
+          onClick={() => startBattle(battle.id)}
+          loading={starting}
         >
           {battle.energy}
           <Image src="/images/energy.svg" alt="energy" width={18} height={18} />
-        </Button>
+        </LoadingButton>
       </Box>
     </Card>
   );

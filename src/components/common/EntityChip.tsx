@@ -12,7 +12,9 @@ type Props = {
   variant?: EntityVariant;
   name?: string;
   battle?: boolean;
+  active?: boolean;
   hp?: number;
+  dead?: boolean;
   size?: number;
 };
 
@@ -21,19 +23,27 @@ export default function Entity({
   name = "",
   variant = EntityVariant.REGULAR,
   battle = true,
-  hp = 100,
-  size = 60,
+  active = false,
+  hp,
+  dead = false,
+  size = 40,
 }: Props) {
   return (
     <Box
-      className={`relative ${battle && hp === 0 ? "opacity-50" : ""}`}
-      sx={{ width: size, height: size }}
+      className={`relative ${dead ? "opacity-50" : ""}`}
+      sx={{
+        width: size,
+        height: size,
+      }}
     >
       <Image
         src={`/api/images/${imageId}`}
         alt={name}
-        className="bg-gray-200 rounded-full overflow-hidden"
-        sizes="35px, (max-width: 768px) 60px"
+        className="bg-gray-200 rounded-full"
+        style={{
+          boxShadow: active ? "0 0 10px 2px black" : "",
+        }}
+        sizes={`${35}px, (max-width: 768px) ${size}px`}
         fill
       />
       {battle && (

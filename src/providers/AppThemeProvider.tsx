@@ -57,6 +57,9 @@ const AppThemeProvider = ({
             fontWeight: "bold",
             lineHeight: 1.2,
           },
+          body1: {
+            fontWeight: 500,
+          },
         },
         components: {
           MuiTooltip: {
@@ -73,6 +76,11 @@ const AppThemeProvider = ({
             defaultProps: {
               animation: "wave",
               variant: "rounded",
+            },
+            styleOverrides: {
+              rounded: {
+                borderRadius: "0.5rem",
+              },
             },
           },
           MuiSnackbar: {

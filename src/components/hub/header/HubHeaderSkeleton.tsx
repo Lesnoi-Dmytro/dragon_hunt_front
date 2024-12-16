@@ -3,11 +3,12 @@
 import { Box, Card, IconButton, Skeleton, Typography } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
-import Sidebar from "../Sidebar";
+import Sidebar from "../../common/navigation/Sidebar";
 import { useState } from "react";
-import MyAvatarSkeleton from "../../user/MyAvatarSkeleton";
+import MyAvatarSkeleton from "../../common/user/MyAvatarSkeleton";
+import MainLogo from "@/components/common/MainLogo";
 
-export default function MainHeaderSkeleton() {
+export default function HubHeaderSkeleton() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const toggleSidebar = () => {
@@ -21,16 +22,7 @@ export default function MainHeaderSkeleton() {
           <IconButton onClick={toggleSidebar}>
             <MenuIcon fontSize="large" />
           </IconButton>
-          <Box className="hidden md:flex items-center gap-4">
-            <Image
-              src="/images/three_dragons.svg"
-              alt="Dragon"
-              width={50}
-              height={50}
-              priority={true}
-            />
-            <Typography variant="h4">Dragon Hunt</Typography>
-          </Box>
+          <MainLogo />
         </Box>
         <Box className="flex items-center gap-4">
           <Box className="flex items-center gap-1">

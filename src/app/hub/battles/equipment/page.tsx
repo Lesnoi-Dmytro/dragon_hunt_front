@@ -1,5 +1,5 @@
-import EnemyBattle from "@/components/battles/EnemyBattle";
-import EnemyBattleSketeton from "@/components/battles/EnemyBattleSkeleton";
+import EnemyBattle from "@/components/hub/battles/EnemyBattle";
+import EnemyBattleSketeton from "@/components/hub/battles/EnemyBattleSkeleton";
 import { EQUIPMENT_BATTLES } from "@/constants";
 import { BattleResponse, BattleType } from "@/types/battles/battleResponse";
 import { apiServerCached } from "@/utils/axios/api";

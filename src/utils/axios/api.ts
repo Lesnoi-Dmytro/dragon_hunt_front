@@ -84,4 +84,33 @@ apiClient.interceptors.request.use(async (config) => {
   return config;
 });
 
-export { apiServer, apiServerCached, apiClient };
+const apiClientCachedInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+const apiClientCached = setupCache(apiClientCachedInstance, {
+  ttl: 1000 * 60 * 60 * 24,
+});
+
+apiClientCached.interceptors.request.use(async (config) => {
+  try {
+    const session = await getSession();
+    if (!session) {
+      return config;
+    }
+
+    const user = session?.user as AuthUser;
+    if (user.backendToken) {
+      config.headers.Authorization = `Bearer ${user.backendToken}`;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  return config;
+});
+
+export { apiServer, apiServerCached, apiClient, apiClientCached };

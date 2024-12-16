@@ -1,16 +1,16 @@
 "use client";
 
-import { Box, Card, IconButton, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Card, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import MyAvatar from "../../user/MyAvatar";
-import Sidebar from "../Sidebar";
+import MyAvatar from "../../common/user/MyAvatar";
+import Sidebar from "../../common/navigation/Sidebar";
 import { memo, useState } from "react";
 import UserResources from "./MyResources";
 import useUserStore from "@/stores/userStore";
-import MainHeaderSkeleton from "./HubHeaderSkeleton";
+import HubHeaderSkeleton from "./HubHeaderSkeleton";
+import MainLogo from "@/components/common/MainLogo";
 
-export default memo(function MainHeader() {
+export default memo(function HubHeader() {
   const loaded = useUserStore((store) => store.loaded);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
@@ -19,7 +19,7 @@ export default memo(function MainHeader() {
   };
 
   if (!loaded) {
-    return <MainHeaderSkeleton />;
+    return <HubHeaderSkeleton />;
   }
 
   return (
@@ -29,16 +29,7 @@ export default memo(function MainHeader() {
           <IconButton onClick={toggleSidebar}>
             <MenuIcon fontSize="large" />
           </IconButton>
-          <Box className="hidden md:flex items-center gap-4">
-            <Image
-              src="/images/three_dragons.svg"
-              alt="Dragon"
-              width={50}
-              height={50}
-              priority={true}
-            />
-            <Typography variant="h4">Dragon Hunt</Typography>
-          </Box>
+          <MainLogo />
         </Box>
         <Box className="flex items-center gap-4">
           <UserResources />
