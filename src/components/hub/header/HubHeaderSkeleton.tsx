@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Card, IconButton, Skeleton, Typography } from "@mui/material";
+import { Box, Card, IconButton, Skeleton } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "../../common/navigation/Sidebar";
