@@ -18,7 +18,7 @@ type Props = {
   size?: number;
 };
 
-export default function Entity({
+export default function EntityChip({
   imageId,
   name = "",
   variant = EntityVariant.REGULAR,

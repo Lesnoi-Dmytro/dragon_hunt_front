@@ -1,6 +1,6 @@
 "use client";
 
-import Entity from "@/components/common/EntityChip";
+import EntityChip from "@/components/common/EntityChip";
 import LoadingButton from "@/components/common/LoadingButton";
 import { BATTLE_DIFICULTIES } from "@/constants";
 import useUserStore from "@/stores/userStore";
@@ -78,7 +78,7 @@ export default function EnemyBattle({ battle }: Props) {
           {battle.opponents.map((opponent) => (
             <Tooltip key={opponent.id} title={opponent.name} disableInteractive>
               <Box>
-                <Entity
+                <EntityChip
                   imageId={opponent.imageId}
                   name={opponent.name}
                   size={60}

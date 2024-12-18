@@ -1,6 +1,6 @@
 "use client";
 
-import Entity from "@/components/common/EntityChip";
+import EntityChip from "@/components/common/EntityChip";
 import useCombatStore from "@/stores/combatStore";
 import { Box } from "@mui/material";
 
@@ -11,7 +11,7 @@ export default function TurnSequence() {
   return (
     <Box className="flex gap-2">
       {turnSequence.map((entity) => (
-        <Entity
+        <EntityChip
           key={entity.id}
           imageId={entity.imageId}
           name={entity.name}

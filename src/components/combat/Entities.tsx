@@ -1,6 +1,6 @@
 import CharacterTooltip from "@/components/combat/CharacterTooltip";
 import EnemyTooltip from "@/components/combat/EnemyTooltip";
-import Entity, { EntityVariant } from "@/components/common/EntityChip";
+import EntityChip, { EntityVariant } from "@/components/common/EntityChip";
 import useCombatStore from "@/stores/combatStore";
 import { Box } from "@mui/material";
 
@@ -19,7 +19,7 @@ export function Entities() {
             className="absolute"
             sx={{ top: 2 + 44 * character.y, left: 2 + 44 * character.x }}
           >
-            <Entity
+            <EntityChip
               imageId={character.imageId}
               name={character.name}
               active={currentActive?.entity.id === character.id}
@@ -43,7 +43,7 @@ export function Entities() {
             onMouseEnter={() => targerEnemy(enemy)}
             onMouseLeave={resetTarget}
           >
-            <Entity
+            <EntityChip
               imageId={enemy.imageId}
               name={enemy.name}
               active={currentActive?.entity.id === enemy.id}
