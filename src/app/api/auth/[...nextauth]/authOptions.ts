@@ -3,8 +3,8 @@ import { AuthOptions, Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import AuthUser from "@/types/auth/authUser";
-import AuthResponse from "@/types/auth/AuthResponse";
-import CustomJwt from "@/types/auth/CustomJwt";
+import AuthResponse from "@/types/auth/authResponse";
+import CustomJwt from "@/types/auth/customJwt";
 
 const authOptions: AuthOptions = {
   session: {
