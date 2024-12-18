@@ -1,6 +1,6 @@
-import AuthResponse from "@/types/auth/AuthResponse";
-import AuthUser from "@/types/auth/AuthUser";
-import CustomJwt from "@/types/auth/CustomJwt";
+import AuthResponse from "@/types/auth/authResponse";
+import AuthUser from "@/types/auth/authUser";
+import CustomJwt from "@/types/auth/customJwt";
 import { apiServer } from "@/utils/axios/api";
 import { AuthOptions, Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
