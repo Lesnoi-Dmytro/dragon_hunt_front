@@ -2,8 +2,10 @@ import { Box } from "@mui/material";
 import Image from "next/image";
 
 export default function MainBackground({
+  hideGoblin,
   children,
 }: Readonly<{
+  hideGoblin?: boolean;
   children: React.ReactNode;
 }>) {
   return (
@@ -24,30 +26,32 @@ export default function MainBackground({
         <Image
           className="w-full h-full"
           src="/images/three_dragons.svg"
-          alt="Dragon Breath"
+          alt="Three Headed Dragon"
           sizes="(max-width: 768px) 208px, 144px"
           fill
         />
       </Box>
-      <Box className="absolute bottom-4 right-4 w-36 h-36 md:w-52 md:h-52">
-        <Image
-          className="w-full h-full"
-          src="/images/goblin.svg"
-          alt="Snake"
-          sizes="(max-width: 768px) 208px, 144px"
-          fill
-        />
-      </Box>
+      {!hideGoblin && (
+        <Box className="absolute bottom-4 right-4 w-36 h-36 md:w-52 md:h-52">
+          <Image
+            className="w-full h-full"
+            src="/images/goblin.svg"
+            alt="Goblin"
+            sizes="(max-width: 768px) 208px, 144px"
+            fill
+          />
+        </Box>
+      )}
       <Box className="absolute top-4 left-4 w-36 h-36 md:w-52 md:h-52">
         <Image
           className="w-full h-full"
           src="/images/dragon3.svg"
-          alt="Snake"
+          alt="Dragon"
           sizes="(max-width: 768px) 208px, 144px"
           fill
         />
       </Box>
-      <Box className="z-10 relative w-full h-full">{children}</Box>
+      <Box className="z-10 w-full h-full">{children}</Box>
     </Box>
   );
 }

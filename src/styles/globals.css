@@ -29,6 +29,13 @@ body {
   height: 100vh;
 }
 
+img,
+svg {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+
 .mirror-x {
   transform: scaleX(-1);
 }
