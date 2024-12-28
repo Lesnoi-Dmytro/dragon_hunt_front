@@ -3,7 +3,7 @@
 import { Entities } from "@/components/combat/Entities";
 import { FieldCell } from "@/components/combat/FieldCell";
 import useCombatStore from "@/stores/combatStore";
-import { CombatBattlefield } from "@/types/combat/combatBattlefield";
+import type { CombatBattlefield } from "@/types/combat/combatBattlefield";
 import { apiClient } from "@/utils/axios/api";
 import { Box, CircularProgress } from "@mui/material";
 import { useEffect } from "react";

@@ -1,4 +1,4 @@
-import { CombatBattlefieldEnemy } from "@/types/combat/combatBattlefield";
+import type { CombatBattlefieldEnemy } from "@/types/combat/combatBattlefield";
 import { Box, Tooltip, Typography } from "@mui/material";
 
 type Props = {

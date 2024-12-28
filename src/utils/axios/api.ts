@@ -1,5 +1,5 @@
 import authOptions from "@/app/api/auth/[...nextauth]/authOptions";
-import AuthUser from "@/types/auth/authUser";
+import type AuthUser from "@/types/auth/authUser";
 import axios from "axios";
 import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
