@@ -1,6 +1,6 @@
-import type { AttackType } from "@/types/character/attackType";
-import type { CharacterClass } from "@/types/character/characterClass";
-import type { Action } from "@/types/combat/action";
+import type { AttackType } from "@/interfaces/character/attackType";
+import type { CharacterClass } from "@/interfaces/character/characterClass";
+import type { Action } from "@/interfaces/combat/action";
 
 export interface CombatBattlefield {
   id: number;

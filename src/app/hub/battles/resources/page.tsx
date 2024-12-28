@@ -1,6 +1,6 @@
 import EnemyBattles from "@/components/hub/battles/EnemyBattles";
 import { RESOURCES_BATTLES } from "@/constants";
-import { BattleType } from "@/types/battles/battleResponse";
+import { BattleType } from "@/interfaces/battles/battleResponse";
 
 export default async function ResoursesBattle() {
   return (

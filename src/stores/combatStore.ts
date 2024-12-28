@@ -1,11 +1,12 @@
 import { CellVariant } from "@/components/combat/FieldCell";
-import { AttackType } from "@/types/character/attackType";
-import {
+import { AttackType } from "@/interfaces/character/attackType";
+import type {
   CombatBattlefield,
   CombatBattlefieldCharacter,
   CombatBattlefieldEnemy,
   CombatBattlefieldEntity,
-} from "@/types/combat/combatBattlefield";
+} from "@/interfaces/combat/combatBattlefield";
+
 import { create, StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";
 
@@ -13,7 +14,6 @@ export interface GridCell {
   entity?: CombatBattlefieldEntity;
   variant: CellVariant;
 }
-
 interface currentActive {
   entity: CombatBattlefieldEntity;
   enemy?: CombatBattlefieldEnemy;

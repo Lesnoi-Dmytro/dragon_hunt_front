@@ -3,7 +3,7 @@ import axios from "axios";
 import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
 import { setupCache } from "axios-cache-interceptor";
-import type { AuthUser } from "@/types/auth/authUser";
+import type { AuthUser } from "@/interfaces/auth/authUser";
 
 const apiServer = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,

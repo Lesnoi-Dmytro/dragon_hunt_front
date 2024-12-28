@@ -1,5 +1,5 @@
 import ItemChip from "@/components/common/ItemChip";
-import type { CombatBattlefieldCharacter } from "@/types/combat/combatBattlefield";
+import type { CombatBattlefieldCharacter } from "@/interfaces/combat/combatBattlefield";
 import { firstUpperCase } from "@/utils/nameUrils";
 import { Box, Tooltip, Typography } from "@mui/material";
 

@@ -3,11 +3,11 @@
 import EntityChip from "@/components/common/EntityChip";
 import LoadingButton from "@/components/common/LoadingButton";
 import { BATTLE_DIFICULTIES } from "@/constants";
-import useUserStore from "@/stores/userStore";
 import {
+  BattleResponse,
   BattleDifficulty,
-  type BattleResponse,
-} from "@/types/battles/battleResponse";
+} from "@/interfaces/battles/battleResponse";
+import useUserStore from "@/stores/userStore";
 import { apiClient } from "@/utils/axios/api";
 import {
   Card,

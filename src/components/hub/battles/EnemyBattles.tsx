@@ -3,9 +3,9 @@
 import EnemyBattle from "@/components/hub/battles/EnemyBattle";
 import EnemyBattleSketeton from "@/components/hub/battles/EnemyBattleSkeleton";
 import type {
-  BattleResponse,
   BattleType,
-} from "@/types/battles/battleResponse";
+  BattleResponse,
+} from "@/interfaces/battles/battleResponse";
 import { apiClient } from "@/utils/axios/api";
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";

@@ -2,8 +2,8 @@
 
 import { Entities } from "@/components/combat/Entities";
 import { FieldCell } from "@/components/combat/FieldCell";
+import type { CombatBattlefield } from "@/interfaces/combat/combatBattlefield";
 import useCombatStore from "@/stores/combatStore";
-import type { CombatBattlefield } from "@/types/combat/combatBattlefield";
 import { apiClient } from "@/utils/axios/api";
 import { Box, CircularProgress } from "@mui/material";
 import { useEffect } from "react";

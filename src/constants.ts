@@ -1,4 +1,4 @@
-import { BattleDifficulty } from "@/types/battles/battleResponse";
+import { BattleDifficulty } from "@/interfaces/battles/battleResponse";
 
 export const RESOURCES_BATTLES = 3;
 export const EQUIPMENT_BATTLES = 3;
