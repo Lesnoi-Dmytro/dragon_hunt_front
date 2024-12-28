@@ -2,9 +2,9 @@ import { apiServer } from "@/utils/axios/api";
 import { AuthOptions, Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import type AuthResponse from "./authResponse";
-import type CustomJwt from "./customJwt";
-import type AuthUser from "./authUser";
+import type AuthResponse from "../../../../types/auth/authResponse";
+import type CustomJwt from "../../../../types/auth/customJwt";
+import type AuthUser from "../../../../types/auth/authUser";
 
 const authOptions: AuthOptions = {
   session: {
