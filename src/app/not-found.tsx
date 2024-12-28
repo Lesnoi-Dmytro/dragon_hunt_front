@@ -42,7 +42,7 @@ export default function NotFound() {
             </Box>
           </Box>
           <Button
-            onClick={() => redirect("/hub/battles/equipment")}
+            onClick={() => redirect("/hub/battles/resources")}
             className="animate-follow-button-fade-out fill-mode-forwards"
           >
             Follow the fairy

@@ -4,22 +4,30 @@ import { Entities } from "@/components/combat/Entities";
 import { FieldCell } from "@/components/combat/FieldCell";
 import useCombatStore from "@/stores/combatStore";
 import { CombatBattlefield } from "@/types/combat/combatBattlefield";
-import { Box, Skeleton } from "@mui/material";
+import { apiClient } from "@/utils/axios/api";
+import { Box, CircularProgress } from "@mui/material";
 import { useEffect } from "react";
 
 type Props = {
-  initialBattlefield: CombatBattlefield;
+  id: string;
 };
 
-export default function Battlefield({ initialBattlefield }: Props) {
+export default function Battlefield({ id }: Props) {
   const battleGrid = useCombatStore((store) => store.battleGrid);
   const setBattlefield = useCombatStore((store) => store.setBattlefield);
   const findCurrentActive = useCombatStore((store) => store.findCurrentActive);
 
   useEffect(() => {
-    setBattlefield(initialBattlefield);
-    findCurrentActive();
-  }, [findCurrentActive, initialBattlefield, setBattlefield]);
+    async function fetchBattlefield() {
+      const battlefield = await apiClient.get<CombatBattlefield>(
+        `/combats/enemies/${id}`
+      );
+      setBattlefield(battlefield.data);
+      findCurrentActive();
+    }
+
+    fetchBattlefield();
+  }, [id, setBattlefield, findCurrentActive]);
 
   return (
     <Box className="relative">
@@ -35,7 +43,7 @@ export default function Battlefield({ initialBattlefield }: Props) {
           <Entities />
         </>
       ) : (
-        <Skeleton variant="rectangular" width={704} height={440} />
+        <CircularProgress />
       )}
     </Box>
   );
