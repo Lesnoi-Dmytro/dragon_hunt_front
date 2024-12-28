@@ -1,6 +1,6 @@
 import { User } from "next-auth";
 
-export default interface AuthUser extends User {
+export interface AuthUser extends User {
   id: string;
   name: string;
   email: string;
