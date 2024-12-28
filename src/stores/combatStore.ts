@@ -1,11 +1,11 @@
 import { CellVariant } from "@/components/combat/FieldCell";
-import { AttackType } from "@/interfaces/character/attackType";
+import { AttackType } from "@/types/character/attackType";
 import type {
   CombatBattlefield,
   CombatBattlefieldCharacter,
   CombatBattlefieldEnemy,
   CombatBattlefieldEntity,
-} from "@/interfaces/combat/combatBattlefield";
+} from "@/types/combat/combatBattlefield";
 
 import { create, StateCreator } from "zustand";
 import { devtools } from "zustand/middleware";

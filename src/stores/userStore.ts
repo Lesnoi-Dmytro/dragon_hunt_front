@@ -1,4 +1,4 @@
-import type { MyInfo, MyInfoResponse } from "@/interfaces/user/myInfo";
+import type { MyInfo, MyInfoResponse } from "@/types/user/myInfo";
 import { apiClient, apiClientCached } from "@/utils/axios/api";
 import { getSession } from "next-auth/react";
 import { create, StateCreator } from "zustand";

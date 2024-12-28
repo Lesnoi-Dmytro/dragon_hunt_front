@@ -6,7 +6,7 @@ import { BATTLE_DIFICULTIES } from "@/constants";
 import {
   BattleResponse,
   BattleDifficulty,
-} from "@/interfaces/battles/battleResponse";
+} from "@/types/battles/battleResponse";
 import useUserStore from "@/stores/userStore";
 import { apiClient } from "@/utils/axios/api";
 import {
